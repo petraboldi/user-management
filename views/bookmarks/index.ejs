@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div id="bookmarks">
+
+      <form action="/bookmarks" method="post">
+        <input id="bookmark-textbox" type="text" name="url" placeholder="example.com">
+        <input id="bookmark-submit" type="submit" value="save">
+      </form>
+
+      <% bookmarks.forEach((bookmark, index) => { %>
+
+          <form action="/bookmarks/<%= bookmark.id %>?_method=DELETE" method="post">
+            <span id="bookmark-<%= index %>"><%= bookmark.url %></span>
+            <a id="bookmark-<%= index %>-edit" href="/bookmarks/<%= bookmark.id %>/edit">edit</a>
+            <input id="bookmark-<%= index %>-delete" type="submit" value="delete">
+          </form>
+
+      <% }) %>
+    </div>
+
+  </body>
+</html>

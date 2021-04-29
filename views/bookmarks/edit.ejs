@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <form action="/bookmarks/<%= bookmark.id %>?_method=PUT" method="post">
+        <input id="bookmark-edit-textbox" type="text" name="url">
+        <input id="bookmark-edit-submit" type="submit" value="update">
+      </form>
+  </body>
+</html>
