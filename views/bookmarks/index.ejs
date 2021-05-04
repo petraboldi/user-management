@@ -9,6 +9,7 @@
 
       <form action="/bookmarks" method="post">
         <input id="bookmark-textbox" type="text" name="url" placeholder="example.com">
+        <input id="bookmark-tags-textbox" type="text" name="tags" placeholder="news">
         <input id="bookmark-submit" type="submit" value="save">
       </form>
 
@@ -18,6 +19,15 @@
             <span id="bookmark-<%= index %>"><%= bookmark.url %></span>
             <a id="bookmark-<%= index %>-edit" href="/bookmarks/<%= bookmark.id %>/edit">edit</a>
             <input id="bookmark-<%= index %>-delete" type="submit" value="delete">
+            <a id="bookmark-0-add-comment" href="/bookmarks/<%= bookmark.id %>/comments/new">add comment</a>
+
+            <ul>
+            <% bookmark.Comments.forEach((comment, commentIndex) => { %>
+              <div id="bookmark-<%= index %>-comment-<%= commentIndex %>">
+                <li><%= comment.text %> <i>commented at <%= comment.date() %></i></li>
+              </div>
+            <% }) %>
+            </ul>
           </form>
 
       <% }) %>

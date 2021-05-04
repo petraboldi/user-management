@@ -7,9 +7,11 @@ app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
 
-const bookmarkController = require('./controllers/bookmark.js')
+const bookmarksController = require('./controllers/bookmarks.js')
+const commentsController = require('./controllers/comments.js')
 
-app.use('/bookmarks', bookmarkController)
+app.use('/bookmarks', bookmarksController)
+app.use('/bookmarks/:bookmarkId/comments', commentsController)
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
