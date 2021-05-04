@@ -1,9 +1,7 @@
 const express = require('express')
 const router = express.Router({mergeParams: true})
 
-const models = require('../models')
-const Comment = models.Comment
-const Bookmark = models.Bookmark
+const { Comment, Bookmark } = require('../models')
 
 router.get('/new', async function (req, res) {
   const bookmark = await Bookmark.findOne({ where: { id: req.params.bookmarkId } })

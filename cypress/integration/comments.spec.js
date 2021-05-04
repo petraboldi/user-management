@@ -9,7 +9,7 @@ describe("Comments", function() {
     cy.get('#bookmark-0-add-comment').click()
     cy.get('#comment-textbox').type("so great!")
     cy.get('#comment-submit').click()
-    cy.get('#bookmark-0-comment-0').should('contain', 'so great!')
+    cy.get('#bookmark-0-comment-1').should('contain', 'so great!')
   })
 
   it("A comment has a commented at", function() {

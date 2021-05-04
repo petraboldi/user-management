@@ -17,6 +17,9 @@
 
           <form action="/bookmarks/<%= bookmark.id %>?_method=DELETE" method="post">
             <span id="bookmark-<%= index %>"><%= bookmark.url %></span>
+            <% bookmark.Tags.forEach((tag, tagIndex) => { %>
+              <span><%= tag.name %></span>
+            <% }) %>
             <a id="bookmark-<%= index %>-edit" href="/bookmarks/<%= bookmark.id %>/edit">edit</a>
             <input id="bookmark-<%= index %>-delete" type="submit" value="delete">
             <a id="bookmark-0-add-comment" href="/bookmarks/<%= bookmark.id %>/comments/new">add comment</a>
