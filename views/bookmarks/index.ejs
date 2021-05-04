@@ -14,26 +14,27 @@
       </form>
 
       <% bookmarks.forEach((bookmark, index) => { %>
+        <span id="bookmark-<%= index %>"><%= bookmark.url %></span>
+        <% bookmark.Tags.forEach((tag, tagIndex) => { %>
+          <a id="bookmarks-tags-<%= tagIndex %>" href="/tags/<%= tag.name %>"><%= tag.name %></a>
+        <% }) %>
+        <a id="bookmark-<%= index %>-edit" href="/bookmarks/<%= bookmark.id %>/edit">edit</a>
 
-          <form action="/bookmarks/<%= bookmark.id %>?_method=DELETE" method="post">
-            <span id="bookmark-<%= index %>"><%= bookmark.url %></span>
-            <% bookmark.Tags.forEach((tag, tagIndex) => { %>
-              <span><%= tag.name %></span>
-            <% }) %>
-            <a id="bookmark-<%= index %>-edit" href="/bookmarks/<%= bookmark.id %>/edit">edit</a>
-            <input id="bookmark-<%= index %>-delete" type="submit" value="delete">
-            <a id="bookmark-0-add-comment" href="/bookmarks/<%= bookmark.id %>/comments/new">add comment</a>
+        <form action="/bookmarks/<%= bookmark.id %>?_method=DELETE" method="post">
+          <input id="bookmark-<%= index %>-delete" type="submit" value="delete">
+        </form>
 
-            <ul>
-            <% bookmark.Comments.forEach((comment, commentIndex) => { %>
-              <div id="bookmark-<%= index %>-comment-<%= commentIndex %>">
-                <li><%= comment.text %> <i>commented at <%= comment.date() %></i></li>
-              </div>
-            <% }) %>
-            </ul>
-          </form>
+        <a id="bookmark-0-add-comment" href="/bookmarks/<%= bookmark.id %>/comments/new">add comment</a>
 
+        <ul>
+        <% bookmark.Comments.forEach((comment, commentIndex) => { %>
+          <div id="bookmark-<%= index %>-comment-<%= commentIndex %>">
+            <li><%= comment.text %> <i>commented at <%= comment.date() %></i></li>
+          </div>
+        <% }) %>
+        </ul>
       <% }) %>
+
     </div>
 
   </body>
