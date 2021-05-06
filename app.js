@@ -15,7 +15,7 @@ const registrationController = require('./controllers/registrations.js')
 app.use('/bookmarks', bookmarksController)
 app.use('/bookmarks/:bookmarkId/comments', commentsController)
 app.use('/tags', tagsController)
-app.use('/registrations', registrationController)
+app.use('/', registrationController)
 
 
 app.listen(port, () => {
