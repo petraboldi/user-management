@@ -20,7 +20,7 @@ router.post('/registrations', async (req, res)=>{
     const hashPassword  =  bcrypt.hashSync("B4c0/\/", password)
  
     await User.create({email: req.body.email,
-    passwordHash:hashPassword }).catch((err)=>{res.render('./registrations/error')})
+    passwordHash:hashPassword }).catch((err)=>{res.render('./registrations/new')})
    res.redirect('./bookmarks')
 })
 

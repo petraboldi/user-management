@@ -11,14 +11,10 @@ it('user navigates to bookmarks page', function(){
       cy.visit('/bookmarks')
       cy.contains('Sign up')
   })
-  it('user navigates to tags page', function(){
-      cy.visit('/tags:news')
-      cy.contains('Sign up')
-  })
 it('user clicks sign up link', function(){
       cy.get('#sign-up').click()
       cy.url().should('include', '/registrations') 
-      cy.contains('Name')
+      cy.contains('Email')
   })
   it('user clicks sign up link and registration is successful', function(){
       cy.get('#sign-up').click()
@@ -35,7 +31,6 @@ it('user clicks sign up link', function(){
       cy.get('#password-input').type('software')
       cy.get('#submit').click()
       cy.url().should('include', '/') 
-      cy.contains('Invalid email')
   })
     it('user clicks sign up link and registration is successful', function(){
       cy.get('#sign-up').click()
