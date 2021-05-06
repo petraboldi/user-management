@@ -10,10 +10,12 @@ app.set('view engine', 'ejs')
 const bookmarksController = require('./controllers/bookmarks.js')
 const commentsController = require('./controllers/comments.js')
 const tagsController = require('./controllers/tags.js')
+const registrationController = require('./controllers/registrations.js')
 
 app.use('/bookmarks', bookmarksController)
 app.use('/bookmarks/:bookmarkId/comments', commentsController)
 app.use('/tags', tagsController)
+app.use('/registrations', registrationController)
 
 
 app.listen(port, () => {
