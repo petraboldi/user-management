@@ -19,6 +19,7 @@
 const truncateTables = require('../../db-reset.js')
 const seedDatabase = require('../../db-seed.js')
 const bookmarksWithTags = require('../../db-create-bookmarks-with-tags.js')
+const user = ('../../db-user.js')
 
 module.exports = (on, config) => {
   on('task', {
@@ -33,7 +34,12 @@ module.exports = (on, config) => {
       seedDatabase()
       return null
     },
-
+    createUser(){
+      console.log('creating user')
+      user()
+      return null
+    }
+    ,
     createBookmarksWithTags() {
       console.log('running createBookmarksWithTags task')
       bookmarksWithTags()
