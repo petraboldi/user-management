@@ -40,11 +40,16 @@ const bookmarksController = require('./controllers/bookmarks.js')
 const commentsController = require('./controllers/comments.js')
 const tagsController = require('./controllers/tags.js')
 const registrationController = require('./controllers/registrations.js')
+const sessionsController = require('./controllers/sessions.js')
 
+
+
+app.use('/sessions', sessionsController)
 app.use('/',registrationController)
 app.use('/bookmarks',authenticator, bookmarksController)
 app.use('/bookmarks/:bookmarkId/comments',authenticator,commentsController)
 app.use('/tags', authenticator, tagsController)
+
 
 
 
