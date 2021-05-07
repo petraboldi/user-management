@@ -1,33 +1,31 @@
-  
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title><%= title %></title>
-
-  <% /* Place any styles in the page in this section. */ %>
-  <%- style %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJS Layout</title>
 </head>
 <body>
-  <header>
-    <% /*
-    Define an required placeholder for the header.
-    If a page doesn't define a header, there will be an error when rendering.
-    */ %>
-    <%- header %>
-  </header>
-
+  <h2><%-locals.errors%></h2>
+  <div>
+    <%if(!locals.currentUser){%>
+      <h3>
+        <a href='/registrations/new' id='sign-up'>Sign up</a>
+        </br>
+        <a href='/sessions/new' id='sign-in'>Sign in</a>
+      </h3>
+    <%}%>
+    <%if(locals.currentUser){%>
+          <h3>
+              <form action="/sessions/?_method=DELETE" method="post">
+              <input id="sign-out" type="submit" value="Sign out">
+              </form>
+          </h3>
+    <%}%>
+  </div>
   <%- body %>
-
-  <footer>
-    <% /*
-    Define an optional placeholder for the footer.
-    If a page doesn't define a footer, this section will simply be empty.
-    */ %>
-    <%- defineContent('footer') %>
-  </footer>
-
-  <% /* Place any scripts contained in views at the end of the page. */ %>
-  <%- script %>
 </body>
 </html>
+
+ 

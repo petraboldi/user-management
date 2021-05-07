@@ -17,7 +17,7 @@ router.post('/registrations', async (req, res)=>{
     const hashPassword  = bcrypt.hashSync(req.body.password, 10);
  
     await User.create({email: req.body.email,
-    passwordHash:hashPassword }).catch((err)=>{res.render('./registrations/new')})
+    passwordHash:hashPassword }).catch((err)=>{res.render('./registrations/new', {errors:['Unsuccessful registration']})})
     const user = await User.findOne({ where: { email: req.body.email }})
     req.session.userId = user.id
     res.redirect('./bookmarks')
