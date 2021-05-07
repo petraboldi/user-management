@@ -1,0 +1,11 @@
+
+<%- contentFor('header') %>
+<h1 class="page-title"><%= _locals.title %></h1>
+
+<%
+    <form method='post' action='/registrations'>
+        <span><p>Email:</p><input id='email-input' type='text' placeholder='email' name='email'></span>
+        <span><p>Pasword:</p><input id='password-input' type='text' placeholder='password' name='password'></span>
+        <input id='submit' type='submit' value='Submit'>
+    </form>
+%>

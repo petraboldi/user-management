@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const methodOverride = require('method-override')
 const session = require('express-session')
+var expressLayouts = require('express-ejs-layouts');
 require('dotenv').config();
 
 app.use(express.urlencoded({ extended: true }))
@@ -10,6 +11,7 @@ app.use(methodOverride('_method'))
 app.set('view engine', 'ejs')
 
 app.set('trust proxy', 1) // trust first proxy
+app.use(expressLayouts);
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: true,
