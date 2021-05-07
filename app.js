@@ -5,6 +5,8 @@ const methodOverride = require('method-override')
 const session = require('express-session')
 var expressLayouts = require('express-ejs-layouts');
 require('dotenv').config();
+const passport = require('passport')
+  , LocalStrategy = require('passport-local').Strategy;
 
 app.use(express.urlencoded({ extended: true }))
 app.use(methodOverride('_method'))
@@ -36,8 +38,6 @@ const authenticator = (req, res, next) => {
   if (req.session.userId === undefined) { res.redirect('/') }
   next()
 }
-
-
 
 const bookmarksController = require('./controllers/bookmarks.js')
 const commentsController = require('./controllers/comments.js')
