@@ -19,7 +19,7 @@
 const truncateTables = require('../../db-reset.js')
 const seedDatabase = require('../../db-seed.js')
 const bookmarksWithTags = require('../../db-create-bookmarks-with-tags.js')
-const user = ('../../db-user.js')
+const user = require('../../db-user.js')
 
 module.exports = (on, config) => {
   on('task', {

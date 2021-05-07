@@ -29,6 +29,7 @@ app.use(async (req, res, next) => {
   res.locals.errors = []
   next()
 })
+
 const authenticator = (req, res, next) => {
   if (req.session.userId === undefined) { res.redirect('/') }
   next()

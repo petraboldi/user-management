@@ -14,14 +14,13 @@ router.get('/registrations/new', (req, res)=>{
 })
 
 router.post('/registrations', async (req, res)=>{
- 
-    let password = req.body.password
-    password = bcrypt.genSaltSync(10);
-    const hashPassword  =  bcrypt.hashSync("B4c0/\/", password)
+    const hashPassword  = bcrypt.hashSync(req.body.password, 10);
  
     await User.create({email: req.body.email,
     passwordHash:hashPassword }).catch((err)=>{res.render('./registrations/new')})
-   res.redirect('./bookmarks')
+    const user = await User.findOne({ where: { email: req.body.email }})
+    req.session.userId = user.id
+    res.redirect('./bookmarks')
 })
 
 module.exports = router;
